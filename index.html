@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagrama de Transición de Estados</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin-top: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #475569;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 1.5em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        strong {
+            color: #0f172a;
+        }
+
+        blockquote {
+            background-color: #f1f5f9;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Diagrama de Transición de Estados</h1>
+    <p>Un <strong>diagrama de transición de estados</strong> (o simplemente diagrama de estados) es una herramienta visual excelente para modelar el comportamiento de un sistema. En lugar de enfocarse en los datos o en las funciones, se centra en <strong>los diferentes estados por los que pasa un objeto o sistema a lo largo de su vida útil</strong> y los eventos que provocan el cambio de un estado a otro.</p>
+    <p>Aquí tienes una guía clara y estructurada para entenderlo y construir uno:</p>
+
+    <hr>
+
+    <h2>1. Elementos clave de un diagrama de estados</h2>
+    <p>Para diseñar o leer un diagrama de estados, necesitas conocer sus componentes básicos:</p>
+    <ul>
+        <li><strong>Estado (Rectángulo con esquinas redondeadas):</strong> Representa una condición o situación en la vida de un objeto durante la cual satisface cierta condición o realiza alguna actividad (ej. <em>Activo</em>, <em>Inactivo</em>, <em>Cargando</em>, <em>Aprobado</em>).</li>
+        <li><strong>Estado Inicial (Círculo sólido negro):</strong> El punto de partida del flujo. Indica dónde comienza el ciclo de vida del objeto.</li>
+        <li><strong>Estado Final (Círculo sólido dentro de un círculo):</strong> El punto de finalización. Indica que el objeto ha llegado al final de su ciclo de vida o que el proceso ha concluido.</li>
+        <li><strong>Transición (Flecha dirigida):</strong> Una relación entre dos estados que indica que un objeto en el primer estado pasará al segundo.</li>
+        <li><strong>Evento / Disparador (Texto sobre la flecha):</strong> El estímulo o acción que causa la transición (ej. <em>Hacer clic en pagar</em>, <em>Superar límite de tiempo</em>, <em>Recibir confirmación</em>).</li>
+        <li><strong>Acción / Efecto (Texto precedido por una diagonal `/` después del evento):</strong> Una respuesta rápida que se ejecuta durante la transición (ej. <code>presionar_boton / encender_luz</code>).</li>
+    </ul>
+
+    <hr>
+
+    <h2>2. Ejemplo Práctico: El Ciclo de Vida de un Pedido Online</h2>
+    <p>Imagina el flujo de un pedido en una tienda digital. Los estados y sus transiciones se verían así:</p>
+    <ul>
+        <li><strong>[Inicio]</strong></li>
+        <li>➡️ El usuario selecciona productos ➡️ <strong>Estado: Pendiente de Pago</strong></li>
+        <li>➡️ <em>Evento: Pago Exitoso</em> ➡️ <strong>Estado: Pagado</strong></li>
+        <li>➡️ <em>Evento: Empaquetar y Enviar</em> ➡️ <strong>Estado: Enviado</strong></li>
+        <li>➡️ <em>Evento: Entregado al Cliente</em> ➡️ <strong>Estado: Entregado</strong> ➡️ <strong>[Fin]</strong></li>
+        <li><em>(Ruta alterna)</em> Desde <strong>Pendiente de Pago</strong> ➡️ <em>Evento: Cancelar Pedido o Expirar Tiempo</em> ➡️ <strong>Estado: Cancelado</strong> ➡️ <strong>[Fin]</strong></li>
+    </ul>
+
+    <hr>
+
+    <h2>3. Pasos para crear tu propio diagrama</h2>
+    <p>Si necesitas diseñar uno para un sistema o base de datos, sigue este proceso:</p>
+
+    <h3>Paso 1: Identificar el objeto principal</h3>
+    <p>No intentes mapear todo el sistema en un solo diagrama. Elige un único objeto o entidad que tenga un comportamiento dinámico interesante (ej. una <em>Factura</em>, un *Usuario*, una <em>Habitación de Hotel</em>).</p>
+
+    <h3>Paso 2: Enumerar los estados posibles</h3>
+    <p>Haz una lista de todas las situaciones en las que puede estar ese objeto.</p>
+    <ul>
+        <li><em>Ejemplo para una habitación de hotel:</em> <code>Disponible</code>, <code>Reservada</code>, <code>Ocupada</code>, <code>En Limpieza</code>, <code>Mantenimiento</code>.</li>
+    </ul>
+
+    <h3>Paso 3: Definir los eventos de transición</h3>
+    <p>Pregúntate: <em>¿Qué tiene que pasar para pasar del Estado A al Estado B?</em></p>
+    <ul>
+        <li>De <code>Disponible</code> a <code>Reservada</code> ➡️ El evento es <strong>"Hacer reserva"</strong>.</li>
+        <li>De <code>Reservada</code> a <code>Ocupada</code> ➡️ El evento es <strong>"Check-in del cliente"</strong>.</li>
+    </ul>
+
+    <h3>Paso 4: Dibujar el flujo</h3>
+    <p>Une los estados con flechas utilizando la simbología estándar (UML). Asegúrate de definir claramente el estado inicial y los posibles estados finales.</p>
+
+    <hr>
+
+    <blockquote>
+        ¿Hay algún proceso, sistema o entidad en específico que estés modelando para el que te gustaría que diseñemos el diagrama de estados juntos?
+    </blockquote>
+
+</div>
+
+</body>
+</html>
